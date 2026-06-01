@@ -2,6 +2,7 @@ package com.github.trifinyuk.task_management_api.controller;
 
 import com.github.trifinyuk.task_management_api.dto.TaskRequestDTO;
 import com.github.trifinyuk.task_management_api.dto.TaskResponseDTO;
+import com.github.trifinyuk.task_management_api.model.enums.TaskStatus;
 import com.github.trifinyuk.task_management_api.service.TaskService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,10 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TaskResponseDTO>> getAllTasks() {
-        List<TaskResponseDTO> tasks = taskService.getAllTasks();
+    public ResponseEntity<List<TaskResponseDTO>> getTasks(@RequestParam(required = false) TaskStatus status) {
+        List<TaskResponseDTO> tasks = (status != null)
+                ? taskService.getTasksByStatus(status)
+                : taskService.getAllTasks();
         return ResponseEntity.ok(tasks);
     }
 

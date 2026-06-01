@@ -4,6 +4,7 @@ import com.github.trifinyuk.task_management_api.dto.TaskRequestDTO;
 import com.github.trifinyuk.task_management_api.dto.TaskResponseDTO;
 import com.github.trifinyuk.task_management_api.exception.TaskNotFoundException;
 import com.github.trifinyuk.task_management_api.model.entity.Task;
+import com.github.trifinyuk.task_management_api.model.enums.TaskStatus;
 import com.github.trifinyuk.task_management_api.repository.TaskRepository;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,13 @@ public class TaskService {
 
     public List<TaskResponseDTO> getAllTasks() {
         return taskRepository.findAll()
+                .stream()
+                .map(taskMapper::toResponseDTO)
+                .toList();
+    }
+
+    public List<TaskResponseDTO> getTasksByStatus(TaskStatus status) {
+        return taskRepository.findByStatus(status)
                 .stream()
                 .map(taskMapper::toResponseDTO)
                 .toList();
