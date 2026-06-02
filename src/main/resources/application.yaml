@@ -28,3 +28,8 @@ logging:
   level:
     org.flywaydb: INFO
     org.hibernate.SQL: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
