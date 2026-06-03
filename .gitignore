@@ -50,3 +50,4 @@ Thumbs.db
 application-local.yml
 application-dev.yml
 *.secret
+.env
