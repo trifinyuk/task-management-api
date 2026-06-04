@@ -44,6 +44,13 @@ docker compose up --build
 После запуска проекта Swagger UI доступен по адресу:
 http://localhost:8080/swagger-ui.html
 
+## 📬 Postman Collection
+
+Готовая коллекция для тестирования API:  
+👉 [postman_collection.json](postman_collection.json)
+
+Импортируйте файл в Postman (File → Import).
+
 ### Примеры запросов
 
 **Создание задачи:**
